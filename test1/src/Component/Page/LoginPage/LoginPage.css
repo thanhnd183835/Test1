@@ -1,0 +1,75 @@
+.overviewPage{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+}
+.imageLogin{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+   
+}
+.imageLogin img{
+    margin: auto;
+    width: 300px;
+    height: 328px;
+}
+.login_right{
+    width: 100%;
+    /* background-color: aliceblue; */
+    display: flex;
+    
+}
+.main_login{
+    background-color: #ffff;
+     margin: auto;
+     width: 60%;
+     height: 60%;
+     border-radius: 10px;
+     border: 1px solid #cac9c988;
+     box-shadow: 2px 2px 2px 2px  #a7a4a4;
+     text-align: center;
+}
+.main_login h3{
+font-size: 25px;
+margin-bottom: 40px;
+}
+.login_input_email, .login_input_password{
+    display: flex;
+    flex-direction: column;
+}
+.login_input_email label, .login_input_password label {
+    text-align: left;
+    margin-left: 9%;
+    margin-bottom: 10px;
+}
+.login_input_email input, .login_input_password input{
+    width: 80%;
+    margin: auto;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #cac9c988;
+    margin-bottom: 10px;
+}
+.button_login button{
+    width: 81%;
+    height: 30px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: blue;
+    color: #fff;
+    cursor: pointer
+}
+.button_login  :hover{
+    background-color: rgb(37, 37, 212);
+}
+.login_text{
+    font-size: 13px;
+    float: right;
+    width: 55%;
+    
+}

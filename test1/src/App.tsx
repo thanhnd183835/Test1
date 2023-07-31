@@ -1,16 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import logo from "./logo.svg";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import './App.css';
+import "./App.css";
+import LoginPage from "./Component/Page/LoginPage/LoginPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" Component={} />
-        <Route path="/addPerson" Component={} />
-        <Route path="/carImport" Component={} />
+        <Route path="/auth" element={<LoginPage />} />
+        {/* <Route path="/login" Component={} />
+        <Route path="/carImport" Component={} /> */}
       </Routes>
     </BrowserRouter>
   );
