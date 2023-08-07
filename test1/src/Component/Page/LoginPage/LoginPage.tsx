@@ -3,13 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./LoginPage.css";
 import { useDispatch } from "react-redux";
+import { signIn } from "../../../Service/Redux/login/login.slice";
+import { Account } from "../../../Model/AccountType";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [email, setEmail] = useState("");
+  const [password, setPassWord] = useState("");
   const handleLogin = async () => {
-    console.log(1111);
+    const body: Account = {
+      email: email,
+      password: password,
+    };
+    // const res = await dispatch(signIn(body));
   };
 
   return (
@@ -26,11 +33,14 @@ const LoginPage = () => {
             <h3>Đăng Nhập</h3>
             <div className="login_input_email">
               <label>Email đăng nhập:</label>
-              <input type="email" />
+              <input type="email" onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="login_input_password">
               <label>Mật khẩu:</label>
-              <input type="password" />
+              <input
+                type="password"
+                onChange={(e) => setPassWord(e.target.value)}
+              />
             </div>
             <div className="button_login">
               <button type="submit" onClick={handleLogin}>

@@ -1,0 +1,17 @@
+.list-todo{
+    width: 500px;
+    border: solid 1px #fff;
+    margin-left: auto;
+    margin-right: auto;
+}
+.add-todo button{
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: blue;
+    color: #fff;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+}

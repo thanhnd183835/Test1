@@ -1,0 +1,81 @@
+:root {
+    background-color: #828192;
+    color: #fff;
+}
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.body-add-list{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 1px #fff;
+    padding: 10px;
+}
+input{
+    border: none;
+    height: 30px;
+    border-radius: 10px;
+    padding-left: 10px;
+    width: 350px;
+    margin-left: 10px;
+}
+input:focus, textarea:focus, select:focus {
+    outline: none;
+}
+.name-list,.add-task,.name-task{
+    margin-bottom: 10px;
+}
+.add-task button{
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    background-color: rgb(37, 37, 212);
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.button-add-list button{
+    border-radius: 10px;
+    font-size: 14px;
+    border: none;
+    padding: 10px;
+    background-color: red;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.name-task input {
+    margin-left: 40px;
+}
+.desc-task textarea{
+    margin-left: 57px;
+    border: none;
+    border-radius: 5px;
+    width: 360px;
+    height: 50px;
+}
+.desc-task{
+    display: flex;   
+}
+.desc-task {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.deadline input{
+    width: 25%;
+    margin-left: 35px;
+}
+.action-task{
+    display: flex;
+    margin-left: 350px;
+}
+select{
+    margin-left: 25px;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 15px;
+}

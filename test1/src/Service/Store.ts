@@ -12,8 +12,16 @@ import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 
 import { configureStore } from "@reduxjs/toolkit";
-
-const rootReducer = combineReducers({});
+import authReducer from "./Redux/login/login.slice";
+import createTaskReducer from "./Redux/Task/Task.slice";
+import updateTaskReducer from "./Redux/Task/Task.slice";
+import deleteTaskReducer from"./Redux/Task/Task.slice"
+const rootReducer = combineReducers({
+  auth: authReducer,
+  createTask: createTaskReducer,
+  updateTask: updateTaskReducer,
+  deleteTask: deleteTaskReducer,
+});
 const persistConfig = {
   key: "root",
   storage: storage,
