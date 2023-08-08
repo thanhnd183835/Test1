@@ -1,17 +1,45 @@
+
 .list-todo{
-    width: 500px;
-    border: solid 1px #fff;
+    border: 1px solid #fff;
+    width: calc(25% - 4%);
+    height: 200px;
+    border-radius: 5px;
+    margin: 2%;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #ffffff;
+    color: #5a6780;
+    cursor: pointer;
+}
+.list-todo:hover{
+    border:1px solid #5a6780;
+    box-shadow: 5px 5px #5a6780;
+}
+
+.name-todo-list{
+    font-size: 20px;
+    margin-left: 10px;
+}
+.listTask{
+    width: 300px;
+    display: flex;
+    height: 40px;
     margin-left: auto;
     margin-right: auto;
-}
-.add-todo button{
-    border: none;
+    margin-top: 10px;
+    background-color: #44446b;
     border-radius: 5px;
-    font-size: 14px;
-    text-transform: uppercase;
-    background-color: blue;
-    color: #fff;
-    padding: 5px;
-    margin: 10px;
-    cursor: pointer;
+    color: #b1b1c9;
+}
+.task-deadline{
+    display: flex;
+    align-items: center;
+    margin-left: auto;   
+}
+.task-name{
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
 }

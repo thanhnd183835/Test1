@@ -15,12 +15,16 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./Redux/login/login.slice";
 import createTaskReducer from "./Redux/Task/Task.slice";
 import updateTaskReducer from "./Redux/Task/Task.slice";
-import deleteTaskReducer from"./Redux/Task/Task.slice"
+import deleteTaskReducer from "./Redux/Task/Task.slice";
+import deleteAllTaskReducer from "./Redux/Task/Task.slice";
+import createTodoListReducer from "./Redux/TodoList/Todolist.slice";
 const rootReducer = combineReducers({
   auth: authReducer,
   createTask: createTaskReducer,
   updateTask: updateTaskReducer,
   deleteTask: deleteTaskReducer,
+  deleteAllTask: deleteAllTaskReducer,
+  createTodoList: createTodoListReducer,
 });
 const persistConfig = {
   key: "root",

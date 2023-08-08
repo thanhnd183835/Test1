@@ -7,13 +7,17 @@ import moment from "moment/moment";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createTask,
+  deleteAllTask,
   deleteTask,
   updateTask,
 } from "../../../../Service/Redux/Task/Task.slice";
 import { RootState } from "../../../../Service/Store";
+import { createTodoList } from "../../../../Service/Redux/TodoList/Todolist.slice";
+import { useNavigate } from "react-router-dom";
 
 const CreateTodolist = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const listTask = useSelector((state: RootState) => state?.createTask);
   const [newTaskName, setNewTaskName] = useState("");
   const [descTask, setDescTask] = useState("");
@@ -22,14 +26,18 @@ const CreateTodolist = () => {
   const [createdAt, setCreatedAt] = useState();
   const [statusTask, setStatusTask] = useState<number>(1);
   const [deadline, setDeadline] = useState<string>();
+
   const handleAddTodoList = () => {
     const body: TodoList = {
       id: uuidv4(),
-      name: newTaskName,
-      createdAt: "",
+      name: nameToDoList,
+      createdAt: moment(new Date()).format("MM/DD/YYYY"),
       createdBy: "",
-      tasks: [],
+      tasks: listTask,
     };
+    dispatch(createTodoList(body));
+    dispatch(deleteAllTask());
+    navigate("/todos")
   };
 
   const handleAddTask = () => {
@@ -78,16 +86,12 @@ const CreateTodolist = () => {
                   <label>Tên Task:</label>
                   <input
                     type="text"
-                    value={task.name}
                     onChange={(e) => setNewTaskName(e.target.value)}
                   />
                 </div>
                 <div className="desc-task">
                   <label>Mô tả:</label>
-                  <textarea
-                    value={task.description}
-                    onChange={(e) => setDescTask(e.target.value)}
-                  />
+                  <textarea onChange={(e) => setDescTask(e.target.value)} />
                 </div>
                 <div className="status-task">
                   <p>
@@ -97,7 +101,6 @@ const CreateTodolist = () => {
                         onChange={(e) => {
                           setStatusTask(parseInt(e.target.value));
                         }}
-                        value={task.status}
                       >
                         <option value={2} style={{ color: "green" }}>
                           Đã hoàn thành
@@ -116,6 +119,7 @@ const CreateTodolist = () => {
                   <label>Deadline:</label>
                   <input
                     type="date"
+                    // value={moment(task.deadline).format("YYYY-MM-DD")}
                     onChange={(e) => {
                       setDeadline(e.target.value);
                     }}

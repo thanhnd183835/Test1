@@ -13,7 +13,6 @@ const CreateTask = createSlice({
     updateTask: (state, action: PayloadAction<Task>) => {
       const currentState = cloneDeep(JSON.parse(JSON.stringify(state)));
       const updateTask = action.payload;
-      console.log(updateTask);
       const taskUpdateIndex: number = currentState.findIndex(
         (task: Task) => task.id === updateTask.id
       );
@@ -28,8 +27,12 @@ const CreateTask = createSlice({
       const newTask = currentState.filter((task: Task) => task.id !== idTask);
       return newTask;
     },
+    deleteAllTask: (state, action: PayloadAction) => {
+      return [];
+    },
   },
 });
-export const { createTask, updateTask, deleteTask } = CreateTask.actions;
+export const { createTask, updateTask, deleteTask, deleteAllTask } =
+  CreateTask.actions;
 
 export default CreateTask.reducer;
