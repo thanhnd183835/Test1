@@ -1,0 +1,11 @@
+.dropdown {
+    width: 150px;
+    height: 50px;
+    background-color: #fff;
+    color: #000;
+}
+.Item{
+    display: flex;
+    margin-left: 5px;
+    cursor: pointer;
+}

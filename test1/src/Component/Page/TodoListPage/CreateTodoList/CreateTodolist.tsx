@@ -26,18 +26,20 @@ const CreateTodolist = () => {
   const [createdAt, setCreatedAt] = useState();
   const [statusTask, setStatusTask] = useState<number>(1);
   const [deadline, setDeadline] = useState<string>();
+  const infoUser = useSelector((state: RootState) => state?.auth);
 
   const handleAddTodoList = () => {
     const body: TodoList = {
       id: uuidv4(),
       name: nameToDoList,
       createdAt: moment(new Date()).format("MM/DD/YYYY"),
-      createdBy: "",
+      createdBy: infoUser._id,
       tasks: listTask,
     };
+
     dispatch(createTodoList(body));
     dispatch(deleteAllTask());
-    navigate("/todos")
+    navigate("/todos");
   };
 
   const handleAddTask = () => {
@@ -56,7 +58,7 @@ const CreateTodolist = () => {
       name: newTaskName,
       description: descTask,
       status: statusTask,
-      deadline: moment(deadline).format("DD-MM-YYYY"),
+      deadline: moment(deadline).format("YYYY-MM-DD"),
     };
     dispatch(updateTask(taskData));
   };

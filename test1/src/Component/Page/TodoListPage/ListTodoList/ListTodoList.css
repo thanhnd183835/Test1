@@ -43,3 +43,31 @@
     margin-bottom: auto;
     margin-left: 10px;
 }
+.icon-edit{
+display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+.infoUser{
+    display: flex;
+    float: right;
+    margin-right: 20px;
+    
+}
+.button-todolist{ 
+    margin-top: 50px;
+    margin-left: 30px;
+}
+.button-todolist button {
+   background-color: rgb(28, 28, 231);
+   border-radius: 5px;
+   border: none;
+   color: #ffffff;
+   cursor: pointer;
+   text-transform: uppercase;
+   padding: 10px;
+}
+.logout{
+    margin-left: 10px;
+    display: flex;
+}

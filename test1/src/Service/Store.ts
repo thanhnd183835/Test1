@@ -18,6 +18,8 @@ import updateTaskReducer from "./Redux/Task/Task.slice";
 import deleteTaskReducer from "./Redux/Task/Task.slice";
 import deleteAllTaskReducer from "./Redux/Task/Task.slice";
 import createTodoListReducer from "./Redux/TodoList/Todolist.slice";
+import updateTodoListReducer from "./Redux/TodoList/Todolist.slice";
+import deleteTaskInTodoListReducer from "./Redux/TodoList/Todolist.slice";
 const rootReducer = combineReducers({
   auth: authReducer,
   createTask: createTaskReducer,
@@ -25,6 +27,8 @@ const rootReducer = combineReducers({
   deleteTask: deleteTaskReducer,
   deleteAllTask: deleteAllTaskReducer,
   createTodoList: createTodoListReducer,
+  updateTodoList: updateTodoListReducer,
+  deleteTaskInTodoList: deleteTaskInTodoListReducer,
 });
 const persistConfig = {
   key: "root",
