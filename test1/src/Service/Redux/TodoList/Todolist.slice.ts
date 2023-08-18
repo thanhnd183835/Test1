@@ -33,7 +33,7 @@ const todoListSlice = createSlice({
         (task: Task) => task.id !== idTask
       );
       console.log(newState);
-        
+
       // return newState;
     },
   },

@@ -21,44 +21,52 @@ const EditTodoList = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
-  const dataTodoList = location.state.dataList;
+  const idTodo = location.state.dataList.id;
+  const listTodoList = useSelector((state: RootState) => state?.createTodoList);
+  const dataTodoList = listTodoList.filter(
+    (todoList: TodoList) => todoList.id === idTodo
+  );
 
   const listTask = useSelector((state: RootState) => state?.createTask);
   const [newTaskName, setNewTaskName] = useState(
-    dataTodoList.tasks.map((item: Task) => item.name)
-  );
-  const [descTask, setDescTask] = useState(
-    dataTodoList.tasks.map((item: Task) => item.description)
+    dataTodoList[0].tasks.map((item: Task) => item.name)
   );
 
-  const [nameToDoList, setNameToDoList] = useState(dataTodoList.name);
+  const [descTask, setDescTask] = useState(
+    dataTodoList[0].tasks.map((item: Task) => item.description)
+  );
+
+  const [nameToDoList, setNameToDoList] = useState(dataTodoList[0].name);
   const [statusTask, setStatusTask] = useState(
-    dataTodoList.tasks.map((item: Task) => item.status)
+    dataTodoList[0].tasks.map((item: Task) => item.status)
   );
   const [deadline, setDeadline] = useState<string>();
-  const [displayedTasks, setDisplayedTasks] = useState(dataTodoList.tasks);
-  const [taskData, setTaskData] = useState(dataTodoList.tasks);
-  // const [newTaskData, setNewTaskData] = useState<Array<>();
+  const [displayedTasks, setDisplayedTasks] = useState(dataTodoList[0].tasks);
+  const [taskData, setTaskData] = useState(dataTodoList[0].tasks);
+  console.log(taskData);
+
   const handleInputChange = (
     index: number,
-    field: string,
-    value: string | number
+    field: keyof Task,
+    value: string
   ) => {
     const updatedTasks = [...taskData];
-    updatedTasks[index][field] =
-      field === "status" ? parseInt(value as string, 10) : value;
+    console.log(updateTask);
+
+    if (field === "status") {
+      updatedTasks[index][field] = parseInt(value as string, 10);
+    } else {
+      updatedTasks[index][field] = value;
+    }
     setTaskData(updatedTasks);
-    // console.log(taskData);
-    // console.log(displayedTasks); /// map ra
   };
-  console.log(dataTodoList);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
   const handleUpdateTodoList = async () => {
     const data: TodoList = {
-      id: dataTodoList.id,
+      id: dataTodoList[0].id,
       name: nameToDoList,
-      createdAt: dataTodoList.createdAt,
-      createdBy: dataTodoList.createdBy,
+      createdAt: dataTodoList[0].createdAt,
+      createdBy: dataTodoList[0].createdBy,
       tasks: taskData,
     };
 
@@ -70,12 +78,12 @@ const EditTodoList = () => {
     }
   };
 
-  const handleSaveTask = (task: Task) => {
+  const handleSaveTask = (task: Task, index: number) => {
     const taskData: Task = {
       id: task.id,
-      name: newTaskName,
-      description: descTask,
-      status: statusTask,
+      name: newTaskName[index],
+      description: descTask[index],
+      status: statusTask[index],
       deadline: moment(deadline).format("DD-MM-YYYY"),
     };
     dispatch(updateTask(taskData));
@@ -94,23 +102,23 @@ const EditTodoList = () => {
     };
 
     setTaskData([...taskData, newTask]);
-    dataTodoList.tasks.push(newTask);
+    dataTodoList[0].tasks.push(newTask);
   };
 
   const showUnfinishedTasks = () => {
-    const unfinishedTasks = dataTodoList.tasks.filter(
+    const unfinishedTasks = dataTodoList[0].tasks.filter(
       (task: Task) => task.status === 1
     );
     setDisplayedTasks(unfinishedTasks);
   };
   const complete = () => {
-    const unfinishedTasks = dataTodoList.tasks.filter(
+    const unfinishedTasks = dataTodoList[0].tasks.filter(
       (task: Task) => task.status === 2
     );
     setDisplayedTasks(unfinishedTasks);
   };
   const showLateDeadlineTasks = () => {
-    const lateDeadlineTasks = dataTodoList.tasks.filter(
+    const lateDeadlineTasks = dataTodoList[0].tasks.filter(
       (task: Task) => task.status === 3
     );
     setDisplayedTasks(lateDeadlineTasks);
@@ -205,7 +213,7 @@ const EditTodoList = () => {
                         }}
                         type="button"
                         disabled
-                        onClick={() => handleSaveTask(task)}
+                        onClick={() => handleSaveTask(task, index)}
                       >
                         SAVE
                       </button>
@@ -303,7 +311,7 @@ const EditTodoList = () => {
                           fontSize: 14,
                           cursor: "pointer",
                         }}
-                        onClick={() => handleSaveTask(task)}
+                        onClick={() => handleSaveTask(task, index)}
                       >
                         SAVE
                       </button>

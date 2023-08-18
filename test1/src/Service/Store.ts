@@ -20,6 +20,7 @@ import deleteAllTaskReducer from "./Redux/Task/Task.slice";
 import createTodoListReducer from "./Redux/TodoList/Todolist.slice";
 import updateTodoListReducer from "./Redux/TodoList/Todolist.slice";
 import deleteTaskInTodoListReducer from "./Redux/TodoList/Todolist.slice";
+
 const rootReducer = combineReducers({
   auth: authReducer,
   createTask: createTaskReducer,
